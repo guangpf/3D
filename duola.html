@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哆啦A梦</title>
+</head>
+<style>
+    @keyframes move{
+        0%{
+            margin:0;
+        }
+        80% {
+            margin:0;
+        }
+        85%{
+            margin:-20px 0 0 0;
+        }
+        90%{
+            margin:0;
+        }
+        93%{
+            margin:0 0 0 7px;
+        }
+        96%{
+            margin:0;
+        }
+        100%{
+            margin:0;
+        }
+    }
+    @keyframes remove{
+        0%{
+            margin:0;
+        }
+        80% {
+            margin:0;
+        }
+        85%{
+            margin:20px 0 0 0;
+        }
+        90%{
+            margin:0;
+        }
+        93%{
+            margin:0 0 0 -7px;
+        }
+        96%{
+            margin:0;
+        }
+        100%{
+            margin:0;
+        }
+    }
+    .box{
+        width:350px;
+        margin:0 auto;
+    }
+    .head{
+        width:310px;
+        height:300px;
+        border-radius:145px;
+        border:2px solid #000;
+        background:linear-gradient(to left bottom,#fff 0%,#07beea 20%,#10a6ce 73%,#000 95%,#444);
+        margin-top:20px;
+        position:relative;
+        box-shadow:-5px 10px 15px rgba(0,0,45,0.6);
+    }
+    .eyes{
+        width:310px;
+        height:100px;
+        position:absolute;
+        left:0;
+        top:25px;;
+    }
+    .eye{
+        width:70px;
+        height:80px;
+        border-radius:33px;
+        border:2px solid #000;
+        background:#Fff;
+        position:absolute;
+        bottom:0;
+        z-index: 2;
+    }
+    .left-eye{
+        left:83px;
+    }
+    .right-eye{
+        left:155px;
+    }
+    .black_eyes{
+        width:15px;
+        height:15px;
+        background:#000;
+        border-radius:50%;
+        position:absolute;
+        bottom:15px;
+        margin-top:15px;
+        z-index: 10;
+    }
+    .eyes .left-black-eye{
+        right:130px;
+        /*margin-left:30px;*/
+        animation:remove 5s infinite linear;
+    }
+    .eyes .right-black-eye{
+        margin-top:30px;
+        left:130px;
+        animation:move 2s infinite linear;
+    }
+    .face{
+        width:264px;
+        height:196px;
+        border:2px solid #000;
+        border-radius:102px;
+        position:absolute;
+        bottom:20px;
+        left:0;
+        right:0;
+        margin:0 auto;
+        background:#fff;
+        z-index: 1;
+    }
+    .nose{
+        width:32px;
+        height:32px;
+        border-radius:50%;
+        border:2px solid #000;
+        position:absolute;
+        top:30px;
+        left:0;
+        right:0;
+        z-index: 1;
+        margin:0 auto;
+        background:radial-gradient(circle 9px at 22px 12px,#fff 10%,#c93e00 100%)
+    }
+    .mouth{
+        width:200px;
+        height: 200px;
+        border-bottom:3px solid #000;
+        position:absolute;
+        left:30px;
+        bottom:40px;
+        border-radius:50%;
+    }
+    .cover{
+        width:32px;
+        height:60px;
+        position:absolute;
+        bottom:90px;
+        left:25px;
+        background:#fff;
+    }
+    .cover:after{
+        content:"";
+        width:32px;
+        height:60px;
+        position:absolute;
+        bottom:-1px;
+        left:175px;
+        background:#fff;
+    }
+    .nose-line{
+        width:3px;
+        height:100px;
+        background:#000;
+        position:absolute;
+        top:53px;
+        left:130px;
+    }
+    .beard{
+        width:60px;
+        height:2px;
+        position:absolute;
+        background:#000;
+    }
+   .beard:nth-child(1){
+        top:58px;
+        left:30px;
+       transform-origin:right;
+       transform:rotate(10deg);
+    }
+    .beard:nth-child(2){
+        top:70px;
+        left:30px;
+    }
+    .beard:nth-child(3){
+        top:83px;
+        left:30px;
+        transform-origin:right;
+        transform:rotate(-10deg);
+    }
+    .beard:nth-child(4){
+          top:58px;
+          right:30px;
+        transform-origin:left;
+        transform:rotate(-10deg);
+      }
+    .beard:nth-child(5){
+            top:70px;
+            right:30px;
+        }
+    .beard:nth-child(6){
+              top:83px;
+              right:30px;
+        transform-origin:left;
+        transform:rotate(10deg);
+          }
+    .neck-box{
+        width:230px;
+        height:100px;
+        position:absolute;
+        bottom:-20px;
+        left:16px;
+        z-index:3;
+    }
+    .neck{
+        width:230px;
+        height:20px;
+        border:2px solid #000;
+        border-radius:10px;
+        background:linear-gradient(to left bottom,#ca4100,#800400);
+        position:absolute;
+        bottom:0;
+        left:0;
+    }
+    .bell{
+        width:40px;
+        height:40px;
+        border-radius:50%;
+        border:2px solid #000;
+        background:linear-gradient(to bottom,#f9f12a,#e9e11a,#a9a100);
+        position:absolute;
+        bottom:-30px;
+        left:93px;
+        box-shadow:-3px 2px 10px rgba(0,0,0,0.6);
+    }
+    .bell-line{
+        width:36px;
+        height:2px;
+        border:2px solid #000;
+        position:absolute;
+        left:0;
+        top:10px;
+    }
+    .bell-circle{
+        width:12px;
+        height:10px;
+        border-radius:50%;
+        position:absolute;
+        left:14px;
+        top:20px;
+        background:#000;
+    }
+    .stand{
+        width:2px;
+        height:15px;
+        background:#000;
+        position:absolute;
+        left:19px;
+        top:25px;
+    }
+    .light{
+        width:8px;
+        height:8px;
+        position:absolute;
+        right:5px;
+        top:7px;
+        background:#fff;
+        border-radius:50%;
+        filter:blur(1px);
+        opacity:0.6;
+    }
+    .body{
+        width:300px;
+        height:200px;
+        position:absolute;
+        top:314px;
+    }
+    .inner{
+        width:220px;
+        height:165px;
+        border:2px solid #000;
+        position:absolute;
+        left:45px;
+        top:0;
+        background:-webkit-gradient(linear, right top, left top, from(#07beea),color-stop(0.5, #0073b3),color-stop(0.75,#00b0e0), to(#0096be));
+        /*box-shadow:-5px 0 5px rgba(0,0,45,.7);*/
+    }
+    .big{
+        width:170px;
+        height:170px;
+        border-radius:50%;
+        border:2px solid #000;
+        position:absolute;
+        left:23px;
+        top:-35px;
+        background:linear-gradient(to left bottom,#fff 0%,#fff 75%,#ccc 83%,#999 90%,#444 95%,#000);
+    }
+    .small{
+        width:130px;
+        height:130px;
+        border:2px solid #000;
+        border-radius:50%;
+        position:absolute;
+        top:-10px;
+        left:0;
+        right:0;
+        margin:0 auto;
+    }
+    .small-cover{
+        width:134px;
+        height:60px;
+        border-bottom:2px solid #000;
+        background:#fff;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        margin:0 auto;
+    }
+    .arms{
+        width:100px;
+        height:100px;
+        position:absolute;
+    }
+    .arms-left{
+        left:-50px;
+        top:0;
+    }
+    .arms-right{
+        right:-70px;
+        top:0;
+    }
+    .arm{
+        width:50px;
+        height:80px;
+        position:absolute;
+        border:1px solid #000;
+        background:#009cc6;
+        z-index: -1;
+    }
+    .arm-left{
+        transform:rotate(60deg);
+        right:-6px;
+        top:2px;
+    }
+    .arm-right{
+        transform:rotate(-60deg);
+        left:-6px;
+        top:4px;
+        background:#07b9e7;
+        box-shadow:5px 0 5px rgba(0,0,45,0.6) inset;
+    }
+    .hand-circle{
+        width:60px;
+        height:60px;
+        border:2px solid #000;
+        background:linear-gradient(to left bottom, #fff,#fff 50%,#eee 70%,#ddd 80%,#999);
+        border-radius:50%;
+        position:absolute;
+    }
+    .hand-left{
+        top:41px;
+        left:-2px;
+    }
+    .hand-right{
+        top:42px;
+        right:-2px;
+    }
+    .hand-cover{
+        width:4px;
+        height:50px;
+        background:#009cc6;
+        position:absolute;
+    }
+    .arms-left .hand-cover {
+        right: 3px;
+    }
+    .arms-right .hand-cover{
+        left:-5px;
+        background:#07b9e7;
+    }
+    .body-bottom{
+        width:20px;
+        height:10px;
+        position:absolute;
+        bottom:33px;
+        left:146px;
+        border-top:2px solid #000;
+        border-left:2px solid #000;
+        border-right:2px solid #000;
+        background:linear-gradient(to left bottom,#666,#fff 83%,#fff);
+        border-top-left-radius:40px;
+        border-top-right-radius:40px;
+    }
+    .foots{
+        width:280px;
+        height:40px;
+        position:absolute;
+        bottom:0;
+        left:15px;
+    }
+    .left-foot{
+        width:125px;
+        height:30px;
+        border:2px solid #000;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius:60px ;
+        border-top-left-radius: 80px;
+        border-top-right-radius:40px ;
+        position:absolute;
+        left:4px;
+        top:6px;
+        background:linear-gradient(to left bottom,#fff,#fff 50%,#eee 70%,#999)
+    }
+    .right-foot{
+        width:125px;
+        height:30px;
+        border:2px solid #000;
+        border-bottom-left-radius: 60px;
+        border-bottom-right-radius:40px ;
+        border-top-left-radius: 60px;
+        border-top-right-radius:80px ;
+        position:absolute;
+        right:4px;
+        top:6px;
+        background:linear-gradient(to left bottom,#fff,#fff 50%,#eee 70%,#999)
+    }
+</style>
+<body>
+<div class="box">
+    <div class="head">
+        <div class="face">
+            <div class="nose"></div>
+            <div class="mouth"></div>
+            <div class="cover"></div>
+            <div class="nose-line"></div>
+            <div class="beards">
+                <div class="beard"></div>
+                <div class="beard"></div>
+                <div class="beard"></div>
+                <div class="beard"></div>
+                <div class="beard"></div>
+                <div class="beard"></div>
+            </div>
+            <div class="neck-box">
+               <div class="neck"></div>
+                <div class="bell">
+                    <div class="bell-line"></div>
+                    <div class="bell-circle"></div>
+                    <div class="stand"></div>
+                    <div class="light"></div>
+                </div>
+            </div>
+        </div>
+      <div class="eyes">
+          <div class="eye left-eye"></div>
+          <div class="black_eyes left-black-eye"></div>
+          <div class="eye right-eye"></div>
+          <div class="black_eyes right-black-eye"></div>
+      </div>
+    </div>
+    <div class="body">
+        <div class="inner">
+           <div class="big"></div>
+            <div class="small"></div>
+            <div class="small-cover"></div>
+        </div>
+        <div class="arms arms-left">
+            <div class="arm arm-left"></div>
+            <div class="hand-circle hand-left"></div>
+            <div class="hand-cover"></div>
+        </div>
+        <div class="arms arms-right">
+            <div class="arm arm-right"></div>
+            <div class="hand-circle hand-right"></div>
+            <div class="hand-cover"></div>
+        </div>
+        <div class="body-bottom"></div>
+        <div class="foots">
+            <div class="left-foot"></div>
+            <div class="right-foot"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
