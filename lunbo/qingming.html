@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @-webkit-keyframes wheel {
+            0%{
+                background-position:0 0;
+            }
+            100%{
+                background-position:-30000px 0;
+            }
+        }
+
+        .box{
+            width:100%px;
+            height:440px;
+            position:fixed;
+            top:0;left:0;right:0;bottom:0;
+            margin:auto;border:1px solid #000;
+            background:url(img/qingming.jpg) repeat-x 0 0;
+            animation:wheel 400s linear infinite;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+</body>
+</html>
